@@ -110,40 +110,5 @@ namespace L2EliminateUpdater
             }
             return "";
         }
-
-        /*
-        static string GetMd5HashFromArchive(string archiveFile)
-        {
-            StringBuilder stringBuilder = new();
-            var archive = ZipFile.OpenRead(archiveFile);
-            using (var fileStream = archive.Entries.First().Open())
-            {
-                MD5 mD = MD5.Create();
-                byte[] array = mD.ComputeHash(fileStream);
-                fileStream.Close();
-                byte[] array2 = array;
-                foreach (byte b in array2)
-                {
-                    stringBuilder.Append(b.ToString("x2"));
-                }
-            }
-            archive.Dispose();
-            return stringBuilder.ToString();
-        }
-
-        void DeleteTempArchive(Set fo)
-        {
-            var dir = Path.Combine(updaterDir.FullName, fo.File[..fo.File.LastIndexOf('\\')].TrimStart('\\'));
-            var archiveFile = Path.Combine(dir, fo.File[fo.File.LastIndexOf('\\')..].TrimStart('\\') + ".zip");
-            try
-            {
-                File.Delete(archiveFile);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        */
     }
 }

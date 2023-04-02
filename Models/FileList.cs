@@ -2,7 +2,6 @@
 
 namespace L2EliminateUpdater.Models
 {
-    [Serializable]
     [XmlRoot(ElementName = "list")]
     public class FileList
     {
