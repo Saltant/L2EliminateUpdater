@@ -69,15 +69,13 @@ namespace L2EliminateUpdater
         static void RunLineageClient(bool isEngClient)
         {
             string dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, isEngClient ? "system-en" : "system-ru");
-            ProcessStartInfo processStartInfo = new()
+            Process.Start(new ProcessStartInfo
             {
                 WorkingDirectory = dir,
                 Verb = "runas",
                 FileName = Path.Combine(dir, "l2.exe"),
                 UseShellExecute = true
-            };
-            ProcessStartInfo startInfo = processStartInfo;
-            Process.Start(startInfo);
+            });
         }
 
         static async Task Check(Updater.ListType checkType, Updater updater, Action<bool> onEndCallback)
