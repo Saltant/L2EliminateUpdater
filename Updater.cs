@@ -95,21 +95,10 @@ namespace L2EliminateUpdater
 
         static string GetMd5HashFromFile(string fileName)
         {
-            using FileStream fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            if (fileStream != null)
-            {
-                MD5 mD = MD5.Create();
-                byte[] array = mD.ComputeHash(fileStream);
-                fileStream.Close();
-                StringBuilder stringBuilder = new();
-                byte[] array2 = array;
-                foreach (byte b in array2)
-                {
-                    stringBuilder.Append(b.ToString("x2"));
-                }
-                return stringBuilder.ToString();
-            }
-            return "";
+            using var md5 = MD5.Create();
+            using var stream = File.OpenRead(fileName);
+            var hash = md5.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", "").ToLower();
         }
     }
 }
