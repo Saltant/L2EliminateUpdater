@@ -6,7 +6,7 @@ Select the game language (RU or ENG).
 The game will launch automatically after a successful update.
 
 #VirusTotal Report (Release v1.3)
-https://www.virustotal.com/gui/file/2c66819bf76b77ada4b935e062cb0f1fdc7f8bd615c3e5bca0cba175cf6ed5bf?nocache=1
+https://www.virustotal.com/gui/file/c0e177f7a1de677c68a9ab2a5811ce4549bc4142abf1f14572d4361f6105a11e?nocache=1
  
  # Preview
 ![alt text](https://puu.sh/JDleb/e9c8c8c5d6.png)
