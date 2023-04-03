@@ -5,27 +5,27 @@ namespace L2EliminateUpdater
 {
     internal class Program
     {
+        static bool isFullCheck = false;
+        static bool isEngClient = false;
         static void Main()
         {
             Console.Title = $"{Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyProductAttribute>().Product} v.{Assembly.GetEntryAssembly().GetName().Version.ToString(2)} by {Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright}";
 
-            bool isFullCheck = false;
-            bool isEngClient = false;
-
-            Console.WriteLine("Full Check? [yes/no] (default: no, only check system)");
+            Console.Write("Full Check? [yes/no]\n(default: no, only check system): ");
             string fullCheck = Console.ReadLine();
             if(!string.IsNullOrEmpty(fullCheck))
             {
                 isFullCheck = fullCheck.ToLower().StartsWith("y");
             }
-            Console.WriteLine("ENG Client? [yes/no] (default: no, start RU client)");
+            Console.WriteLine();
+            Console.Write("ENG Client? [yes/no]\n(default: no, start RU client): ");
             string lang = Console.ReadLine();
             if (!string.IsNullOrEmpty(lang))
             {
                 isEngClient = lang.ToLower().StartsWith("y");
             }
-
-            Update(isFullCheck).ContinueWith(t =>
+            Console.WriteLine();
+            Update().ContinueWith(t =>
             {
                 if(t.Result)
                 {
@@ -41,9 +41,9 @@ namespace L2EliminateUpdater
             }).Wait();
         }
 
-        static async Task<bool> Update(bool isFullCheck)
+        static async Task<bool> Update()
         {
-            Updater updater = new();
+            Updater updater = new(isEngClient);
             bool isFullCheckSuccess = false;
             bool isSystemCheckSuccess = false;
             if (isFullCheck)

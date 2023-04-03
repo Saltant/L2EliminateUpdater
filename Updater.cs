@@ -16,11 +16,12 @@ namespace L2EliminateUpdater
 
         readonly DirectoryInfo updaterDir = Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UpdaterTmp"));
         readonly HttpClient httpClient;
-
+        readonly bool isEngClient;
         public DirectoryInfo GetUpdaterDir() => updaterDir;
 
-        public Updater()
+        public Updater(bool isEngClient)
         {
+            this.isEngClient = isEngClient;
             httpClient = new();
             httpClient.DefaultRequestHeaders.Add("User-Agent", USER_AGENT);
         }
@@ -45,7 +46,7 @@ namespace L2EliminateUpdater
             {
                 await Console.Out.WriteLineAsync(ex.Message);
             }
-            return fl?.Set;
+            return isEngClient ? fl?.Set.Where(x => x.File.StartsWith("\\system-en")).ToList() : fl?.Set.Where(x => x.File.StartsWith("\\system-ru")).ToList();
         }
 
         public async Task<bool> DownloadFileAsync(Set fo, ListType listType)
