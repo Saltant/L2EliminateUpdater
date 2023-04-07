@@ -14,15 +14,18 @@
     <Product>Eliminate Updater</Product>
     <SignAssembly>False</SignAssembly>
 	<TieredCompilation>true</TieredCompilation>
+	<AssemblyVersion>1.4</AssemblyVersion>
+	<FileVersion>1.4</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>True</Optimize>
+    <Optimize>False</Optimize>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

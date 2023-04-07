@@ -46,7 +46,9 @@ namespace L2EliminateUpdater
             {
                 await Console.Out.WriteLineAsync(ex.Message);
             }
-            return isEngClient ? fl?.Set.Where(x => x.File.StartsWith("\\system-en")).ToList() : fl?.Set.Where(x => x.File.StartsWith("\\system-ru")).ToList();
+            if (listType == ListType.Patch)
+                return isEngClient ? fl?.Set.Where(x => x.File.StartsWith("\\system-en")).ToList() : fl?.Set.Where(x => x.File.StartsWith("\\system-ru")).ToList();
+            else return fl?.Set;
         }
 
         public async Task<bool> DownloadFileAsync(Set fo, ListType listType)
