@@ -5,8 +5,8 @@ Select the full client update or just the system folder.
 Select the game language (RU or ENG).
 The game will launch automatically after a successful update.
 
-#VirusTotal Report
-https://www.virustotal.com/gui/file/46104e57601eea0a480bfd4d3f62fd575b4fe94b6b445a30131121ac858ba969?nocache=1
+#VirusTotal Report (Release v1.3)
+https://www.virustotal.com/gui/file/c0e177f7a1de677c68a9ab2a5811ce4549bc4142abf1f14572d4361f6105a11e?nocache=1
  
  # Preview
 ![alt text](https://puu.sh/JDleb/e9c8c8c5d6.png)
