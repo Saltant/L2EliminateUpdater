@@ -83,6 +83,8 @@ namespace L2EliminateUpdater
             bool isSuccess = true;
             foreach (var fo in await updater.GetFileList(checkType))
             {
+                if (checkType == Updater.ListType.Patch && IsFileFiltered(fo.File.TrimStart('\\'))) continue;
+
                 await Console.Out.WriteLineAsync();
                 await Console.Out.WriteAsync($"Cheking file: {fo.File.TrimStart('\\')} ... ");
                 try
@@ -100,6 +102,23 @@ namespace L2EliminateUpdater
             }
             onEndCallback.Invoke(isSuccess);
             await Task.CompletedTask;
+        }
+
+        static bool IsFileFiltered(string file)
+        {
+            if(File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file)))
+            {
+                if(Enum.GetNames<FilteredFile>().Any(x => file.Contains(x))) return true;
+                else return false;
+            }
+            else return false;
+        }
+
+        enum FilteredFile
+        {
+            WindowsInfo,
+            Option,
+            chatfilter,
         }
     }
 }
